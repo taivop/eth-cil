@@ -18,10 +18,10 @@ W = tf.Variable(tf.random_uniform(correct_W.shape, -1.0, 1.0))
 b = tf.Variable(tf.zeros(correct_b.shape))
 
 # define the model
-y_hat = ...
+y_hat = tf.add(tf.matmul(x_data, W), b)
 
 # define the loss
-loss = ...
+loss = tf.truediv(tf.reduce_sum(tf.pow(tf.sub(y_hat, y_data), 2)), float(y_data.shape[0]))
 tf.scalar_summary('log loss', tf.log(1.0 + loss))
 
 # define the optimizer

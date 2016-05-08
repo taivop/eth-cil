@@ -23,10 +23,10 @@ x_ph = tf.placeholder(tf.float32, shape=(batch_size, 2))
 y_ph = tf.placeholder(tf.float32, shape=(batch_size, 3))
 
 # define the model (using placeholders)
-y_hat = ...
+y_hat = tf.add(tf.matmul(x_ph, W), b)
 
 # define the (stochastic!) loss
-loss = ...
+loss = tf.truediv(tf.reduce_sum(tf.pow(tf.sub(y_hat, y_ph), 2)), float(batch_size))
 tf.scalar_summary('log loss', tf.log(1.0 + loss))  # attention: this is the stochastic loss, i.e. it will be noisy
 
 # define the optimizer
